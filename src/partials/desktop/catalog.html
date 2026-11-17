@@ -1,0 +1,48 @@
+  <section class="catalog shell" id="catalog">
+    <aside class="catalog__side" aria-label="Фильтры каталога">
+      <div class="side-block">
+        <h2 class="side-title">Разделы</h2>
+        <ul class="side-list">
+          <li><button type="button" data-category="all">Все книги <span data-category-count="all">14</span></button></li>
+          <li><button type="button" data-category="Классика">Классика <span data-category-count="Классика">0</span></button></li>
+          <li><button type="button" data-category="Поэзия">Поэзия <span data-category-count="Поэзия">0</span></button></li>
+          <li><button type="button" data-category="История">История <span data-category-count="История">0</span></button></li>
+          <li><button type="button" data-category="Искусство">Искусство <span data-category-count="Искусство">0</span></button></li>
+          <li><button type="button" data-category="Детские">Детские книги <span data-category-count="Детские">0</span></button></li>
+          <li><button type="button" data-category="Иностранная">Иностранная <span data-category-count="Иностранная">0</span></button></li>
+        </ul>
+      </div>
+      <div class="side-block">
+        <h2 class="side-title">Сохранность</h2>
+        <label class="check"><input type="checkbox" value="Идеальное" data-condition>Идеальное</label>
+        <label class="check"><input type="checkbox" value="Отличное" data-condition>Отличное</label>
+        <label class="check"><input type="checkbox" value="Хорошее" data-condition>Хорошее</label>
+      </div>
+      <div class="side-block">
+        <h2 class="side-title">Цена до</h2>
+        <p class="side-price"><b data-price-label>150 000 ₽</b></p>
+        <input class="range-input" type="range" min="5000" max="150000" step="1000" value="150000" data-max-price aria-label="Максимальная цена">
+      </div>
+      <div class="side-block">
+        <label class="check"><input type="checkbox" data-rare>Только редкости</label>
+      </div>
+      <button class="btn btn--ghost btn--sm btn--block" type="button" data-reset-filters>Сбросить фильтры</button>
+    </aside>
+
+    <div class="catalog__main">
+      <div class="toolbar">
+        <p class="toolbar__count" data-count><b>14</b> книг</p>
+        <label class="toolbar__sort">
+          <span>Сортировка</span>
+          <select data-sort aria-label="Сортировка каталога">
+            <option value="popular">сначала популярные</option>
+            <option value="price-asc">сначала дешевле</option>
+            <option value="price-desc">сначала дороже</option>
+            <option value="year-asc">сначала старые</option>
+            <option value="year-desc">сначала новые</option>
+          </select>
+        </label>
+      </div>
+      <div class="grid" data-catalog></div>
+    </div>
+  </section>

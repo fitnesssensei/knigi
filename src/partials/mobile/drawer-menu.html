@@ -1,0 +1,34 @@
+<!-- Меню разделов: выезжает справа по кнопке «три полоски» -->
+<aside class="drawer drawer--menu" data-panel="menu" role="dialog" aria-modal="true" aria-label="Меню" aria-hidden="true">
+  <div class="drawer__head">
+    <h2 class="drawer__title">Меню</h2>
+    <button class="icon-btn" type="button" data-close-panel aria-label="Закрыть меню">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div class="drawer__body">
+    <nav class="menu-nav" aria-label="Разделы магазина">
+      <!-- Отдельные кнопки разделов. Пока без переходов — обработчики появятся позже -->
+      <button type="button">Новые книги</button>
+      <!-- Кнопка «Категории» раскрывает список жанров; список скрыт по умолчанию -->
+      <button type="button" data-menu-categories aria-expanded="false" aria-controls="menu-categories">
+        Категории
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="menu-nav__group" id="menu-categories">
+        <div class="menu-chips" role="group" aria-label="Категории каталога">
+          <button class="chip" type="button" data-category="all">Все книги</button>
+          <button class="chip" type="button" data-category="Классика">Классика</button>
+          <button class="chip" type="button" data-category="Поэзия">Поэзия</button>
+          <button class="chip" type="button" data-category="История">История</button>
+          <button class="chip" type="button" data-category="Искусство">Искусство</button>
+          <button class="chip" type="button" data-category="Детские">Детские</button>
+          <button class="chip" type="button" data-category="Иностранная">Иностранная</button>
+        </div>
+      </div>
+      <button type="button">Бэстселлеры</button>
+      <button type="button">Авторы</button>
+      <button type="button">Вход</button>
+    </nav>
+  </div>
+</aside>

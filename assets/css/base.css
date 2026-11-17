@@ -1,0 +1,463 @@
+/* ============================================================
+   ГОРЫ-КНИГ — базовые стили (общие для всех страниц)
+   ============================================================ */
+
+:root {
+  --paper: #F7F3FC;
+  --paper-2: #FCFAFF;
+  --ink: #221B33;
+  --ink-soft: #4B4460;
+  --muted: #726987;
+  --line: #E3DAF3;
+  --violet: #5B3D8F;
+  --violet-dark: #412A69;
+  --lilac: #B69BD9;
+  --radius: 3px;
+  --shell: 1140px;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --font-serif: "Cormorant Garamond", "Times New Roman", serif;
+  --font-sans: "Inter", -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.is-locked { overflow: hidden; }
+
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+input, select, textarea { font: inherit; color: inherit; }
+svg { display: block; width: 18px; height: 18px; }
+img { display: block; max-width: 100%; }
+
+:focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; }
+
+.shell { width: 100%; max-width: var(--shell); margin: 0 auto; padding: 0 32px; }
+
+h1, h2, h3 { font-family: var(--font-serif); font-weight: 500; line-height: 1.12; letter-spacing: -0.01em; }
+
+.h1 { font-size: clamp(2.1rem, 4.6vw, 3.5rem); }
+.h2 { font-size: clamp(1.5rem, 2.4vw, 2rem); }
+.lede { max-width: 54ch; color: var(--ink-soft); font-size: 1.02rem; }
+.eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+.small { font-size: 12.5px; line-height: 1.55; }
+.muted { color: var(--muted); }
+
+/* ---------- Логотип ---------- */
+
+.logo { display: inline-flex; flex-direction: column; line-height: 1; }
+.logo__name { font-family: var(--font-serif); font-size: 1.45rem; letter-spacing: 0.14em; white-space: nowrap; }
+.logo__sub { margin-top: 5px; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+
+/* ---------- Кнопки ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 13px;
+  line-height: 1.2;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.btn--primary { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.btn--primary:hover { background: var(--violet); border-color: var(--violet); }
+.btn--ghost { background: transparent; color: var(--ink); }
+.btn--ghost:hover { border-color: var(--ink); }
+.btn--sm { padding: 8px 14px; font-size: 12px; }
+.btn--block { width: 100%; }
+.btn.is-added { background: var(--violet); border-color: var(--violet); color: #fff; }
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: var(--muted);
+  transition: color 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.icon-btn:hover { color: var(--ink); background: rgba(91, 61, 143, 0.09); }
+
+.tool {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: var(--ink-soft);
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.tool:hover { color: var(--ink); background: rgba(91, 61, 143, 0.09); }
+.tool svg { width: 19px; height: 19px; }
+
+.tool__badge {
+  position: absolute;
+  top: 3px;
+  right: 1px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 99px;
+  background: var(--violet);
+  color: #fff;
+  font-size: 9.5px;
+  font-weight: 600;
+  line-height: 16px;
+  text-align: center;
+}
+
+.tool__badge[data-empty="true"] { display: none; }
+
+/* ---------- Поля и списки фильтров ---------- */
+
+.field { display: grid; gap: 5px; font-size: 12px; color: var(--muted); }
+.field input, .field select {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.field input:focus, .field select:focus { border-color: var(--ink); outline: none; }
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 0;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.check input { width: 15px; height: 15px; accent-color: var(--violet); }
+
+.range-input { width: 100%; accent-color: var(--violet); }
+
+select { border-radius: var(--radius); }
+
+.sheet-actions { display: flex; gap: 10px; }
+.sheet-actions .btn { flex: 1; }
+
+.search-field {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.search-field:focus-within { border-bottom-color: var(--ink); color: var(--ink); }
+.search-field svg { flex: none; width: 17px; height: 17px; }
+.search-field input { flex: 1; min-width: 0; border: 0; background: none; padding: 4px 0; font-size: 15px; outline: none; }
+.search-field input::placeholder { color: var(--muted); }
+
+/* ---------- Обложка ---------- */
+
+.cover {
+  --cover-title: 1.32rem;
+  --cover-author: 9.5px;
+  --cover-mark: 9px;
+  --cover-gap: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--cover-gap);
+  aspect-ratio: 3 / 4.3;
+  padding: 11%;
+  background: var(--cover-bg, #3B2F55);
+  color: var(--cover-fg, #F1E9FA);
+  border-radius: 2px;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.14), inset 0 0 22px rgba(0, 0, 0, 0.16);
+  transition: transform 0.4s var(--ease);
+}
+
+.cover__rule { width: 26%; height: 1px; margin-bottom: 2px; background: currentColor; opacity: 0.55; }
+.cover__author { font-size: var(--cover-author); letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.78; }
+.cover__title { font-family: var(--font-serif); font-size: var(--cover-title); font-weight: 500; line-height: 1.1; }
+.cover__mark { margin-top: auto; font-size: var(--cover-mark); letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.68; }
+
+/* ---------- Карточка книги ---------- */
+
+.book-card { display: flex; flex-direction: column; }
+.book-card__media { position: relative; display: block; margin-bottom: 14px; }
+.book-card__open { display: block; width: 100%; }
+.book-card:hover .cover { transform: translateY(-3px); }
+
+.book-card__tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 3px 7px;
+  background: rgba(247, 243, 252, 0.94);
+  color: var(--violet);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.book-card__fav {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(247, 243, 252, 0.92);
+  color: var(--ink-soft);
+  transition: color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.book-card__fav:hover { transform: scale(1.06); color: var(--violet); }
+.book-card__fav svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.book-card__fav[aria-pressed="true"] { color: var(--violet); }
+.book-card__fav[aria-pressed="true"] svg { fill: currentColor; }
+
+.book-card__body { display: flex; flex: 1; flex-direction: column; gap: 5px; }
+.book-card__author { font-size: 11px; letter-spacing: 0.06em; color: var(--muted); }
+.book-card__title { font-family: var(--font-serif); font-size: 1.18rem; font-weight: 500; line-height: 1.24; }
+.book-card__title button { text-align: left; transition: color 0.2s var(--ease); }
+.book-card__title button:hover { color: var(--violet); }
+.book-card__meta { font-size: 12px; color: var(--muted); }
+
+.book-card__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 14px;
+}
+
+.price { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 500; line-height: 1; white-space: nowrap; }
+.price--old { margin-left: 6px; font-family: var(--font-sans); font-size: 11px; color: var(--muted); text-decoration: line-through; }
+
+.add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 11px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 12px;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.add-btn svg { width: 14px; height: 14px; }
+.add-btn:hover { border-color: var(--ink); color: var(--ink); }
+.add-btn.is-added { border-color: var(--violet); color: var(--violet); }
+
+/* ---------- Метки ---------- */
+
+.pill {
+  display: inline-block;
+  padding: 3px 9px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.pill--accent { border-color: rgba(91, 61, 143, 0.35); color: var(--violet); }
+
+/* ---------- Панели, модальное окно, уведомления ---------- */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(34, 27, 51, 0.42);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s var(--ease), visibility 0.25s;
+}
+
+.overlay.is-open { opacity: 1; visibility: visible; }
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  width: min(430px, 100%);
+  background: var(--paper);
+  visibility: hidden;
+  transform: translateX(101%);
+  transition: transform 0.3s var(--ease), visibility 0.3s;
+}
+
+.drawer.is-open { visibility: visible; transform: none; }
+
+.drawer__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.drawer__title { font-size: 1.3rem; }
+.drawer__body { flex: 1; display: flex; flex-direction: column; gap: 16px; overflow-y: auto; padding: 18px 20px; }
+.drawer__foot { padding: 16px 20px; border-top: 1px solid var(--line); background: var(--paper-2); }
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  visibility: hidden;
+}
+
+.modal.is-open { visibility: visible; }
+
+.modal__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(34, 27, 51, 0.5);
+  opacity: 0;
+  transition: opacity 0.25s var(--ease);
+}
+
+.modal__panel {
+  position: relative;
+  width: min(880px, 100%);
+  max-height: min(88vh, 780px);
+  overflow-y: auto;
+  padding: 32px;
+  background: var(--paper);
+  border-radius: var(--radius);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.modal.is-open .modal__scrim { opacity: 1; }
+.modal.is-open .modal__panel { opacity: 1; transform: none; }
+.modal__close { position: absolute; top: 12px; right: 12px; }
+
+.toast-stack {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 90;
+  display: grid;
+  gap: 8px;
+  width: min(360px, calc(100% - 32px));
+  transform: translateX(-50%);
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 14px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 13px;
+  border-radius: var(--radius);
+  animation: toast-in 0.24s var(--ease) both;
+}
+
+.toast svg { flex: none; width: 16px; height: 16px; }
+.toast.is-out { animation: toast-out 0.28s var(--ease) both; }
+
+@keyframes toast-in { from { opacity: 0; transform: translateY(8px); } }
+@keyframes toast-out { to { opacity: 0; transform: translateY(8px); } }
+
+/* ---------- Карточка книги в панели ---------- */
+
+.book-detail { display: grid; grid-template-columns: minmax(0, 240px) minmax(0, 1fr); gap: 32px; }
+.book-detail__eyebrow { display: flex; gap: 8px; margin-bottom: 12px; }
+.book-detail__title { font-size: 1.7rem; margin-bottom: 6px; }
+.book-detail__author { margin-bottom: 14px; color: var(--muted); }
+.book-detail__desc { margin-bottom: 18px; color: var(--ink-soft); }
+
+.specs { display: grid; gap: 8px; margin-bottom: 20px; padding: 16px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.specs > div { display: flex; justify-content: space-between; gap: 16px; font-size: 13px; }
+.specs dt { color: var(--muted); }
+.specs dd { text-align: right; }
+
+.book-detail__buy { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.book-detail__price { margin-right: auto; font-family: var(--font-serif); font-size: 1.5rem; }
+.book-detail__note { display: flex; align-items: center; gap: 7px; margin-top: 16px; font-size: 12px; color: var(--muted); }
+.book-detail__note svg { flex: none; width: 15px; height: 15px; }
+
+.fav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 15px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 13px;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.fav-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.fav-btn[aria-pressed="true"] { border-color: var(--violet); color: var(--violet); }
+.fav-btn[aria-pressed="true"] svg { fill: currentColor; }
+
+/* ---------- Корзина ---------- */
+
+.cart-item { display: grid; grid-template-columns: 58px minmax(0, 1fr) auto; gap: 12px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.cart-item__cover .cover { padding: 10% 8%; }
+.cart-item__cover .cover > * { display: none; }
+.cart-item__author { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.cart-item__title { font-family: var(--font-serif); font-size: 1rem; line-height: 1.25; }
+.cart-item__meta { font-size: 11.5px; color: var(--muted); }
+.cart-item__row { display: flex; gap: 14px; margin-top: 5px; }
+.cart-item__remove { font-size: 11.5px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+.cart-item__remove:hover { color: var(--violet); }
+.cart-item__price { font-size: 13px; white-space: nowrap; }
+
+.checkout { display: grid; gap: 13px; }
+.checkout__note { font-size: 11.5px; line-height: 1.5; color: var(--muted); }
+.sum { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--ink-soft); }
+.sum--total { margin-top: 6px; padding-top: 10px; border-top: 1px solid var(--line); color: var(--ink); font-weight: 500; }
+.cart-foot__action { margin-top: 12px; }
+.cart-foot__note { margin-top: 10px; font-size: 11.5px; color: var(--muted); }
+
+.order-done { display: grid; gap: 8px; padding: 16px 0; text-align: center; }
+.order-done__mark { display: grid; place-items: center; width: 42px; height: 42px; margin: 0 auto 4px; border: 1px solid var(--violet); border-radius: 50%; color: var(--violet); }
+.order-done__num { font-family: var(--font-serif); font-size: 1.15rem; }
+
+.empty { display: grid; justify-items: center; gap: 10px; padding: 36px 8px; text-align: center; }
+.empty__title { font-family: var(--font-serif); font-size: 1.2rem; }

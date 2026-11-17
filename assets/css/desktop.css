@@ -1,0 +1,192 @@
+/* ============================================================
+   ГОРЫ-КНИГ — настольная версия
+   ============================================================ */
+
+/* ---------- Шапка ---------- */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(247, 243, 252, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s var(--ease);
+}
+
+.header.is-stuck { border-bottom-color: var(--line); }
+.header__inner { display: flex; align-items: center; gap: 30px; height: 74px; }
+
+.nav { display: flex; gap: 22px; margin-right: auto; font-size: 13.5px; color: var(--ink-soft); }
+.nav a { padding: 3px 0; white-space: nowrap; border-bottom: 1px solid transparent; transition: color 0.2s var(--ease), border-color 0.2s var(--ease); }
+.nav a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+.tools { display: flex; align-items: center; gap: 6px; }
+
+.search-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 8px;
+  padding: 7px 2px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.search-line:focus-within { border-bottom-color: var(--ink); color: var(--ink); }
+.search-line svg { flex: none; width: 16px; height: 16px; }
+.search-line input { width: 178px; border: 0; background: none; padding: 2px 0; font-size: 13px; outline: none; }
+.search-line input::placeholder { color: var(--muted); }
+
+/* ---------- Первый экран ---------- */
+
+.hero { padding: 62px 0 54px; }
+.hero__inner { display: flex; align-items: flex-end; justify-content: space-between; gap: 56px; }
+.hero__text { display: grid; gap: 16px; max-width: 620px; }
+.hero__actions { display: flex; gap: 10px; margin-top: 8px; }
+.hero__covers { display: flex; align-items: flex-end; gap: 16px; padding-bottom: 6px; }
+.hero__covers .cover { justify-content: center; width: 132px; padding: 13%; --cover-title: 15px; --cover-mark: 7px; }
+.hero__covers .cover:nth-child(2) { width: 150px; margin-bottom: 14px; --cover-title: 17px; }
+.hero__covers .cover:nth-child(3) { width: 120px; --cover-title: 14px; }
+.hero__covers .cover__rule,
+.hero__covers .cover__author,
+.hero__covers .cover__mark { display: none; }
+
+.book-detail__media .cover { --cover-title: 1.25rem; }
+
+/* ---------- Каталог ---------- */
+
+.catalog { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 52px; padding-top: 6px; padding-bottom: 76px; }
+
+.catalog__side { position: sticky; top: 96px; align-self: start; display: grid; gap: 26px; }
+.side-block { display: grid; gap: 9px; }
+
+.side-title {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.side-list { display: grid; gap: 1px; }
+.side-list button {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 5px 0;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  text-align: left;
+  transition: color 0.15s var(--ease);
+}
+
+.side-list button:hover { color: var(--ink); }
+.side-list button.is-active { color: var(--violet); font-weight: 500; }
+.side-list span { font-size: 12px; color: var(--muted); }
+.side-price { font-size: 13px; color: var(--ink-soft); }
+.side-price b { color: var(--ink); font-weight: 500; }
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 30px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid var(--line);
+}
+
+.toolbar__count { font-size: 13px; color: var(--muted); }
+.toolbar__count b { color: var(--ink); font-weight: 500; }
+.toolbar__sort { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
+
+.toolbar__sort select {
+  padding: 5px 4px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: transparent;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.toolbar__sort select:hover { border-color: var(--line); }
+
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 42px 30px; }
+
+/* ---------- О магазине ---------- */
+
+.about { padding: 62px 0; border-top: 1px solid var(--line); }
+.about__inner { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 52px; }
+.about__head { display: grid; align-content: start; gap: 12px; }
+.about__text { display: grid; gap: 14px; max-width: 62ch; color: var(--ink-soft); }
+
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; margin-top: 44px; }
+.fact { display: grid; gap: 3px; padding-top: 14px; border-top: 1px solid var(--line); }
+.fact b { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 500; }
+.fact span { font-size: 12.5px; color: var(--muted); }
+
+/* ---------- Подписка ---------- */
+
+.subscribe { padding: 46px 0; border-top: 1px solid var(--line); }
+.subscribe__inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+.subscribe__text { display: grid; gap: 6px; }
+.subscribe__form { display: flex; gap: 10px; }
+
+.subscribe__form input {
+  width: 260px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+  font-size: 14px;
+}
+
+.subscribe__form input:focus { border-color: var(--ink); outline: none; }
+
+/* ---------- Подвал ---------- */
+
+.footer { padding: 42px 0 26px; border-top: 1px solid var(--line); }
+.footer__inner { display: flex; justify-content: space-between; gap: 48px; }
+.footer__brand { display: grid; align-content: start; gap: 10px; max-width: 280px; }
+.footer__links { display: flex; flex-wrap: wrap; gap: 12px 28px; font-size: 13px; color: var(--ink-soft); }
+.footer__links a:hover { color: var(--violet); }
+
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 11.5px;
+  color: var(--muted);
+}
+
+/* ---------- Узкие экраны ---------- */
+
+@media (max-width: 1180px) {
+  .nav a[href="mobile.html"] { display: none; }
+  .search-line input { width: 150px; }
+}
+
+@media (max-width: 1080px) {
+  .nav { gap: 16px; }
+  .hero__covers { display: none; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .about__inner { grid-template-columns: 240px minmax(0, 1fr); gap: 32px; }
+}
+
+@media (max-width: 860px) {
+  .catalog { grid-template-columns: 1fr; gap: 28px; }
+  .catalog__side { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+  .catalog__side > .btn { grid-column: 1 / -1; }
+  .search-line { display: none; }
+  .subscribe__inner { flex-direction: column; align-items: flex-start; gap: 22px; }
+  .footer__inner { flex-direction: column; gap: 26px; }
+}
+
+.catalog__main { min-width: 0; }

@@ -1,0 +1,44 @@
+<aside class="drawer" data-panel="filter" role="dialog" aria-modal="true" aria-label="Фильтры каталога" aria-hidden="true">
+  <div class="drawer__head">
+    <h2 class="drawer__title">Фильтры</h2>
+    <button class="icon-btn" type="button" data-close-panel aria-label="Закрыть фильтры">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div class="drawer__body">
+    <div class="filter-group">
+      <p class="filter-group__title">Сохранность</p>
+      <label class="check"><input type="checkbox" value="Идеальное" data-condition>Идеальное</label>
+      <label class="check"><input type="checkbox" value="Отличное" data-condition>Отличное</label>
+      <label class="check"><input type="checkbox" value="Хорошее" data-condition>Хорошее</label>
+    </div>
+    <div class="filter-group">
+      <p class="filter-group__title">Цена до</p>
+      <p class="filter-price"><b data-price-label>150 000 ₽</b></p>
+      <input class="range-input" type="range" min="5000" max="150000" step="1000" value="150000" data-max-price aria-label="Максимальная цена">
+    </div>
+    <div class="filter-group">
+      <p class="filter-group__title">Особое</p>
+      <label class="check"><input type="checkbox" data-rare>Только редкости</label>
+    </div>
+    <!-- Сортировка перенесена из панели каталога в фильтры -->
+    <div class="filter-group">
+      <p class="filter-group__title">Сортировка</p>
+      <label class="field">
+        <select data-sort aria-label="Сортировка каталога">
+          <option value="popular">популярные</option>
+          <option value="price-asc">дешевле</option>
+          <option value="price-desc">дороже</option>
+          <option value="year-asc">старые</option>
+          <option value="year-desc">новые</option>
+        </select>
+      </label>
+    </div>
+  </div>
+  <div class="drawer__foot">
+    <div class="sheet-actions">
+      <button class="btn btn--ghost" type="button" data-reset-filters>Сбросить</button>
+      <button class="btn btn--primary" type="button" data-apply-filters>Показать</button>
+    </div>
+  </div>
+</aside>

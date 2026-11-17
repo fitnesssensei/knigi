@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ГОРЫ-КНИГ — выберите версию сайта</title>
+<meta name="description" content="ГОРЫ-КНИГ — букинистический магазин. Настольная и мобильная версии каталога.">
+<meta name="theme-color" content="#F7F3FC">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<style>
+  .entry { display: grid; align-content: center; gap: 36px; min-height: 100vh; padding: 64px 0; }
+  .entry__head { display: grid; gap: 14px; max-width: 640px; }
+  .entry__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; max-width: 780px; }
+  .entry-card {
+    display: grid;
+    gap: 8px;
+    padding: 22px 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    transition: border-color 0.2s var(--ease);
+  }
+  .entry-card:hover { border-color: var(--ink); }
+  .entry-card .pill { justify-self: start; }
+  .entry-card h2 { font-size: 1.35rem; }
+  .entry-card p { font-size: 13px; color: var(--muted); }
+  .entry-card__go { margin-top: 8px; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--violet); }
+  .entry-card[data-current="true"] { border-color: var(--violet); }
+  .entry__hint { font-size: 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<main class="shell entry">
+  <div class="entry__head">
+    <a class="logo" href="index.html" aria-label="ГОРЫ-КНИГ">
+      <span class="logo__name">ГОРЫ-КНИГ</span>
+      <span class="logo__sub">Букинистика · Сочи</span>
+    </a>
+    <p class="eyebrow">Две версии одного магазина</p>
+    <h1 class="h1">Книги, которые уже прожили одну жизнь</h1>
+    <p class="lede">Один каталог, одна корзина и одно избранное в двух интерфейсах. Данные и логика у версий общие.</p>
+    <p class="entry__hint" id="entry-hint">Определяем подходящую версию по ширине экрана…</p>
+  </div>
+
+  <div class="entry__grid">
+    <a class="entry-card" href="desktop.html" data-entry="desktop">
+      <span class="pill">Для компьютера</span>
+      <h2>Настольная версия</h2>
+      <p>Фильтры слева, поиск в шапке, корзина и избранное в боковых панелях.</p>
+      <span class="entry-card__go">Открыть</span>
+    </a>
+    <a class="entry-card" href="mobile.html" data-entry="mobile">
+      <span class="pill">Для телефона</span>
+      <h2>Мобильная версия</h2>
+      <p>Разделы чипами, фильтры и поиск в выезжающих панелях, компактные карточки.</p>
+      <span class="entry-card__go">Открыть</span>
+    </a>
+  </div>
+
+  <p class="small muted">Демонстрационный проект: 14 лотов, цены и описания вымышлены. Обложки нарисованы типографикой.</p>
+</main>
+
+<script>
+  (function () {
+    var wide = typeof window.matchMedia === 'function'
+      ? window.matchMedia('(min-width: 900px)').matches
+      : window.innerWidth >= 900;
+    var current = document.querySelector('[data-entry="' + (wide ? 'desktop' : 'mobile') + '"]');
+    var hint = document.getElementById('entry-hint');
+    if (current) current.setAttribute('data-current', 'true');
+    if (hint) {
+      hint.textContent = wide
+        ? 'Ширина экрана больше 900 px — рекомендуем настольную версию.'
+        : 'Ширина экрана меньше 900 px — рекомендуем мобильную версию.';
+    }
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<header class="header" data-header>
+  <div class="shell header__inner">
+    <a class="logo" href="mobile.html" aria-label="ГОРЫ-КНИГ — на главную">
+      <span class="logo__name">ГОРЫ-КНИГ</span>
+      <span class="logo__sub">Букинистика · Сочи</span>
+    </a>
+    <div class="tools">
+      <button class="tool" type="button" data-open-panel="favorites" aria-label="Избранное">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 20.5s-7.6-4.7-7.6-9.5A4.2 4.2 0 0 1 12 8.1a4.2 4.2 0 0 1 7.6 2.9c0 4.8-7.6 9.5-7.6 9.5Z" stroke-linejoin="round"/></svg>
+        <span class="tool__badge" data-fav-count data-empty="true">0</span>
+      </button>
+      <button class="tool" type="button" data-open-panel="cart" aria-label="Корзина">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 8h12l1 12H5L6 8Z" stroke-linejoin="round"/><path d="M9 8V6.6a3 3 0 0 1 6 0V8"/></svg>
+        <span class="tool__badge" data-cart-count data-empty="true">0</span>
+      </button>
+      <!-- Кнопка «три полоски» открывает меню разделов -->
+      <button class="tool" type="button" data-open-panel="menu" aria-label="Открыть меню">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <!-- Поиск во всю ширину экрана: под логотипом, отделён линией от верхней строки -->
+  <div class="shell header__search">
+    <label class="search-field">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4" stroke-linecap="round"/></svg>
+      <input type="search" data-search placeholder="Автор, название, год" aria-label="Поиск по каталогу">
+    </label>
+  </div>
+</header>

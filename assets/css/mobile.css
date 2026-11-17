@@ -1,0 +1,241 @@
+/* ============================================================
+   ГОРЫ-КНИГ — мобильная версия
+   ============================================================ */
+
+.shell { padding: 0 16px; }
+
+/* ---------- Шапка ---------- */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(247, 243, 252, 0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header__inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 58px; }
+.logo__name { font-size: 1.22rem; }
+.logo__sub { margin-top: 3px; font-size: 8.5px; }
+.tools { display: flex; align-items: center; gap: 0; }
+.tool { width: 36px; height: 36px; }
+.tool svg { width: 18px; height: 18px; }
+.tool__badge { top: 0; right: -1px; }
+
+/* Вторая строка шапки: поиск на всю ширину экрана, отделён линией */
+.header__search { padding: 10px 16px 12px; border-top: 1px solid var(--line); }
+
+.header__search .search-field {
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+}
+
+.header__search .search-field:focus-within { border-color: var(--ink); }
+.header__search .search-field svg { width: 16px; height: 16px; }
+.header__search .search-field input { font-size: 14px; }
+
+/* ---------- Первый экран ---------- */
+
+.hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; padding-block: 26px 24px; }
+.hero .h1 { font-size: 1.95rem; }
+.hero__text { color: var(--ink-soft); font-size: 14px; }
+.hero__covers { display: none; }
+
+/* ---------- Разделы (чипы) ---------- */
+
+.chip {
+  flex: none;
+  padding: 7px 13px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.chip.is-active { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+
+/* ---------- Панель каталога ---------- */
+
+.toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.toolbar__count { margin-right: auto; font-size: 12.5px; color: var(--muted); }
+.toolbar__count b { color: var(--ink); font-weight: 500; }
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 11px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 12.5px;
+  transition: border-color 0.2s var(--ease);
+}
+
+.filter-btn.is-active { border-color: var(--ink); }
+.filter-btn svg { width: 14px; height: 14px; }
+.filter-btn__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--violet); }
+
+/* ---------- Карточки: горизонтальные ---------- */
+
+.grid { display: grid; }
+
+.book-card {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.book-card__media { margin: 0; }
+.book-card .cover { aspect-ratio: 3 / 4; }
+.book-card .cover > * { display: none; }
+.book-card .price--old { display: none; }
+.book-card__body { gap: 4px; }
+.book-card__author { font-size: 10px; }
+.book-card__title { font-size: 1.06rem; line-height: 1.2; }
+.book-card__meta { font-size: 11.5px; }
+.book-card__foot { gap: 8px; padding-top: 10px; }
+.book-card__tag { display: none; }
+.book-card__fav { top: 3px; right: 3px; width: 26px; height: 26px; }
+.book-card__fav svg { width: 13px; height: 13px; }
+.price { font-size: 1.02rem; }
+.add-btn { padding: 6px 9px; font-size: 11.5px; }
+.add-btn svg { width: 13px; height: 13px; }
+
+/* ---------- О магазине и подписка ---------- */
+
+.about { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; padding-block: 30px; border-top: 1px solid var(--line); }
+.about__text { display: grid; gap: 10px; font-size: 14px; color: var(--ink-soft); }
+
+.subscribe { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; padding-block: 26px; border-top: 1px solid var(--line); }
+.subscribe__text { display: grid; gap: 5px; }
+.subscribe__form { display: flex; gap: 8px; min-width: 0; }
+
+.subscribe__form input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+  font-size: 14px;
+}
+
+.subscribe__form input:focus { border-color: var(--ink); outline: none; }
+.subscribe__form .btn { padding: 10px 14px; font-size: 12.5px; }
+
+/* ---------- Подвал ---------- */
+
+.footer { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; padding-block: 26px calc(28px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); }
+.footer__links { display: flex; flex-wrap: wrap; gap: 10px 18px; font-size: 13px; color: var(--ink-soft); }
+.footer__note { font-size: 11.5px; color: var(--muted); }
+
+/* ---------- Панели ---------- */
+
+.drawer {
+  top: auto;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-height: 90vh;
+  height: auto;
+  border-radius: 10px 10px 0 0;
+  transform: translateY(101%);
+}
+
+.drawer.is-open { transform: none; }
+
+/* Панель меню выезжает справа — из-под кнопки «три полоски» */
+.drawer--menu {
+  top: 0;
+  bottom: 0;
+  left: auto;
+  right: 0;
+  width: min(300px, 84vw);
+  height: 100%;
+  max-height: none;
+  border-radius: 0;
+  transform: translateX(101%);
+}
+
+.drawer--menu.is-open { transform: none; }
+.drawer__head { padding: 14px 16px; }
+.drawer__title { font-size: 1.15rem; }
+.drawer__body { gap: 14px; padding: 16px; }
+.drawer__foot { padding: 12px 16px calc(14px + env(safe-area-inset-bottom)); }
+
+/* Пункты меню — отдельные кнопки на всю ширину панели */
+.menu-nav { display: grid; }
+
+/* Стили только для самих пунктов, чтобы не затронуть чипы категорий внутри */
+.menu-nav > button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  text-align: left;
+  transition: color 0.2s var(--ease);
+}
+
+.menu-nav > button:last-child { border-bottom: 0; }
+.menu-nav > button:hover { color: var(--violet); }
+
+/* Стрелка-индикатор раскрытия списка жанров */
+.menu-nav > button svg { flex: none; width: 15px; height: 15px; color: var(--muted); transition: transform 0.2s var(--ease); }
+.menu-nav > button[aria-expanded="true"] svg { transform: rotate(180deg); }
+
+/* Список жанров скрыт по умолчанию и открывается кнопкой «Категории» */
+.menu-nav__group { display: none; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.menu-nav__group.is-open { display: block; }
+.menu-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.filter-group { display: grid; gap: 8px; }
+.filter-group__title { font-size: 10.5px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+.filter-price { font-size: 13px; color: var(--ink-soft); }
+.filter-price b { color: var(--ink); font-weight: 500; }
+
+/* ---------- Модальное окно ---------- */
+
+.modal { padding: 0; align-items: end; }
+.modal__panel { width: 100%; max-height: 92vh; padding: 24px 16px calc(24px + env(safe-area-inset-bottom)); border-radius: 12px 12px 0 0; }
+.modal__close { top: 10px; right: 10px; }
+.book-detail { grid-template-columns: 110px minmax(0, 1fr); gap: 16px; }
+.book-detail__media .cover { --cover-title: 12px; padding: 10px; }
+.book-detail__media .cover__rule,
+.book-detail__media .cover__author,
+.book-detail__media .cover__mark { display: none; }
+.book-detail__title { font-size: 1.3rem; }
+.book-detail__desc { font-size: 13.5px; }
+.book-detail__eyebrow { margin-bottom: 8px; }
+.book-detail__buy { gap: 8px; }
+.book-detail__price { width: 100%; margin-right: 0; font-size: 1.35rem; }
+.book-detail__buy .btn, .book-detail__buy .fav-btn { flex: 1; justify-content: center; padding: 10px 12px; font-size: 12.5px; }
+.specs { grid-column: 1 / -1; margin-bottom: 0; }
+.specs > div { font-size: 12.5px; }
+.book-detail__note { grid-column: 1 / -1; }
+.book-detail__buy { grid-column: 1 / -1; }
+
+/* ---------- Корзина ---------- */
+
+.cart-item { grid-template-columns: 50px minmax(0, 1fr); }
+.cart-item__cover .cover > * { display: none; }
+.cart-item__price { grid-column: 2; font-size: 12.5px; }
+.toast-stack { bottom: calc(18px + env(safe-area-inset-bottom)); }
+
+@media (min-width: 640px) {
+  .shell { padding: 0 24px; }
+  /* Возвращаем вертикальные отступы строки поиска после переопределения .shell */
+  .header__search { padding: 10px 24px 12px; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; }
+}
