@@ -17,6 +17,9 @@
 .header.is-stuck { border-bottom-color: var(--line); }
 .header__inner { display: flex; align-items: center; gap: 30px; height: 74px; }
 
+/* Шапка высотой 74 px: якорные ссылки не должны прятать заголовки под ней */
+section[id], footer[id] { scroll-margin-top: 90px; }
+
 .nav { display: flex; gap: 22px; margin-right: auto; font-size: 13.5px; color: var(--ink-soft); }
 .nav a { padding: 3px 0; white-space: nowrap; border-bottom: 1px solid transparent; transition: color 0.2s var(--ease), border-color 0.2s var(--ease); }
 .nav a:hover { color: var(--ink); border-bottom-color: var(--ink); }

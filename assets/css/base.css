@@ -23,6 +23,11 @@
 
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 
+/* Плавная прокрутка по якорям: отступ сверху, чтобы закреплённая шапка
+   не накрывала заголовок секции (#catalog, #about, #subscribe, #contacts).
+   В mobile.css и desktop.css значение уточняется под высоту шапки. */
+section[id], footer[id] { scroll-margin-top: 16px; }
+
 body {
   margin: 0;
   background: var(--paper);

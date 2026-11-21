@@ -279,13 +279,18 @@
   }
 
   function renderBadges() {
+    // Считаем только реально существующие книги: в localStorage могли остаться
+    // id, которых больше нет в каталоге. Иначе бейдж показывал бы больше
+    // позиций, чем перечислено в панели корзины/избранного.
+    var cartCount = cartList().length;
+    var favsCount = favoritesList().length;
     document.querySelectorAll('[data-cart-count]').forEach(function (node) {
-      node.textContent = state.cart.length;
-      node.dataset.empty = String(state.cart.length === 0);
+      node.textContent = cartCount;
+      node.dataset.empty = String(cartCount === 0);
     });
     document.querySelectorAll('[data-fav-count]').forEach(function (node) {
-      node.textContent = state.favs.length;
-      node.dataset.empty = String(state.favs.length === 0);
+      node.textContent = favsCount;
+      node.dataset.empty = String(favsCount === 0);
     });
   }
 
@@ -838,7 +843,8 @@
 
   function scrollToCatalog() {
     var catalog = document.getElementById('catalog');
-    if (!catalog) return;
+    // Метода может не быть (тестовый DOM-стаб) — тогда просто ничего не делаем
+    if (!catalog || typeof catalog.scrollIntoView !== 'function') return;
     try {
       catalog.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch (error) {
@@ -847,9 +853,23 @@
   }
 
   var searchTimer = null;
+  // Флаг «сессии ввода»: к каталогу прокручиваем один раз, а не на каждый символ
+  var searchScrolled = false;
 
   function applySearch(value, source) {
     state.query = String(value == null ? '' : value);
+
+    if (!state.query) {
+      // Поле очищено — следующая попытка поиска снова подведёт каталог к экрану
+      searchScrolled = false;
+    } else if (!searchScrolled) {
+      // Первый символ в поиске шапки: прокручиваем к каталогу, иначе результат
+      // фильтрации остаётся за пределами экрана. Шапка закреплена, поэтому
+      // поле поиска не уезжает и ввод можно продолжать.
+      searchScrolled = true;
+      scrollToCatalog();
+    }
+
     document.querySelectorAll('[data-search]').forEach(function (input) {
       if (input !== source && input.value !== state.query) input.value = state.query;
     });

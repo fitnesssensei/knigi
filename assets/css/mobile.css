@@ -38,6 +38,9 @@
 .header__search .search-field svg { width: 16px; height: 16px; }
 .header__search .search-field input { font-size: 14px; }
 
+/* Шапка из двух строк (~118 px): отступ, чтобы якоря не прятали заголовки */
+section[id], footer[id] { scroll-margin-top: 132px; }
+
 /* ---------- Первый экран ---------- */
 
 .hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; padding-block: 26px 24px; }
